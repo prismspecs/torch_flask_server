@@ -1,4 +1,4 @@
-# running the docker container
+# running server inside a docker container
 
 1. build it
 ```docker build . --tag my/torch```
@@ -8,4 +8,3 @@
 
 3. run server
 ```python3 flask_server.py```
-

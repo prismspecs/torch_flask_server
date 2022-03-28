@@ -21,7 +21,7 @@ CORS(app)
 def test():
     return "OK"
 
-@app.route("/json", methods=['GET', 'POST', 'PUT'])
+@app.route("/query", methods=['GET', 'POST', 'PUT'])
 def getjsondata():
 
     if request.method=='POST':
@@ -36,7 +36,7 @@ def getjsondata():
 
         z = jzftr.cuda()
         c = None                   # class labels (not used in this example)
-        trunc = .8
+        trunc = data['truncation']
         img = G(z, c, trunc)
 
         #img = (img.permute(0, 2, 3, 1) * 127.5 + 128).clamp(0, 255).to(torch.uint8)

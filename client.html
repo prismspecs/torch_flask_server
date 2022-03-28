@@ -18,6 +18,11 @@
 <body>
 
     <!-- <a href="#" id="click_gen">click</a> -->
+
+    <div class="slidecontainer">
+        <input type="range" min="0" max="3" value="1" step=".1" class="slider" id="truncation">
+    </div>
+
     <button id="button">Randomize and Send</button>
 
     <img id="image_output" src="" style="float:right">
@@ -86,12 +91,13 @@
                 }
 
 
-                xhr.open("POST", "http://localhost:9000/json");
+                xhr.open("POST", "http://localhost:9000/query");
                 xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 
                 // send the collected data as JSON
                 xhr.send(JSON.stringify({
-                    'z': z
+                    'z': z,
+                    'truncation': parseFloat(truncation),
                 }));
 
                 // console.log(JSON.stringify({
@@ -113,6 +119,12 @@
             $("#button").click(function() {
                 RandomSend();
             });
+
+            document.getElementById("truncation").oninput = function() {
+                truncation = this.value;
+                SendRequest();
+                // console.log("truncation is " + truncation);
+            }
         }
 
         Load();
@@ -122,4 +134,3 @@
 </body>
 
 </html>
-
