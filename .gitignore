@@ -1,2 +1,3 @@
 snapshot.pkl
 *.pkl
+__pycache__
